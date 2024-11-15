@@ -1,0 +1,28 @@
+name: Deploy to Astronomer
+
+on:
+  push:
+    branches:
+      - main  # Trigger on pushes to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Deploy to Astronomer
+      - name: Deploy to Astronomer
+        uses: astronomer/deploy-action@v1
+        with:
+          # API key for Astronomer (store as a GitHub secret)
+          api-key: ${{ secrets.ASTRONOMER_API_KEY }}
+
+          # Workspace ID for Astronomer (store as a GitHub secret)
+          workspace-id: ${{ secrets.ASTRONOMER_WORKSPACE_ID }}
+
+          # Deployment ID for the Airflow environment (store as a GitHub secret)
+          deployment-id: ${{ secrets.ASTRONOMER_DEPLOYMENT_ID }}
