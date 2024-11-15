@@ -1,0 +1,8 @@
+# Project name
+name: my-airflow-project
+
+# Define the Docker image to use
+docker:
+  build:
+    args:
+      AIRFLOW_IMAGE: quay.io/astronomer/ap-airflow:2.6.2-buster
