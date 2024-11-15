@@ -1,24 +1,19 @@
-name: Deploy to Astronomer
+name: Astronomer CI - Deploy code
 
 on:
   push:
     branches:
-      - main  # Trigger on pushes to the main branch
-
+      - main
 
 env:
-   ASTRO_API_TOKEN:: ${{ secrets.ASTRONOMER_API_KEY }}
-   DEPLOYMENT_ID: ${{ secrets.ASTRONOMER_DEPLOYMENT_ID }}
+  ## Sets Deployment API credentials as environment variables
+  ASTRO_API_TOKEN: ${{ secrets.ASTRO_API_TOKEN }}
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      # Step 1: Checkout the repository
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Deploy to Astro
-        uses: astronomer/deploy-action@v0.8.0
-        with:
-         deployment-id: ${{ secrets.ASTRONOMER_DEPLOYMENT_ID }}
+    - name: Deploy to Astro
+      uses: astronomer/deploy-action@v0.8.0
+      with:
+        deployment-id: cm3ighgb90lky01q774uonggd
