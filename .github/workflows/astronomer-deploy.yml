@@ -16,7 +16,7 @@ jobs:
 
       # Step 2: Deploy to Astronomer
       - name: Deploy to Astronomer
-        uses: astronomer/deploy-action@v1
+        uses: astronomer/deploy-action@v0.8.0
         with:
           # API key for Astronomer (store as a GitHub secret)
           api-key: ${{ secrets.ASTRONOMER_API_KEY }}
